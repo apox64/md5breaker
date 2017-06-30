@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>md5 Hashbreaker</h1>
+  <p class="lead">Throw some md5 hash in here and let me crack it for you ...</p>
+  <input type="text" class="form-control" id="md5hash"><br><br>
+  <button type="button" class="btn btn-danger btn-md">Break!</button><br><br>
+  <div class="controls">
+    <label>Result:</label><br>
+    <p class="form-control-static">(cracked hash here)</p>
+  </div>
+</div>
+{% endblock %}
