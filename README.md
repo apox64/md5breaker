@@ -11,6 +11,7 @@ Simple md5 breaking service written in python using Flask and redis. Offers an H
 4. currently available endpoints (routes) are:
   * /
   * /about
+  * /result (POST)
   * /md5/`<md5hashstr>`
   * /database/flush
   * /database/populate
