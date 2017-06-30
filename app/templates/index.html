@@ -1,14 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}md5 Hashbreaker{% endblock %}
 {% block body %}
 <div class="jumbotron">
   <h1>md5 Hashbreaker</h1>
   <p class="lead">Throw some md5 hash in here and let me crack it for you ...</p>
-  <input type="text" class="form-control" id="md5hash"><br><br>
-  <button type="button" class="btn btn-danger btn-md">Break!</button><br><br>
+
+  <form action="/result" method="POST">
+    <input type="text" class="form-control" name="md5hash" value="21232f297a57a5a743894a0e4a801fc3" id="md5hash"><br><br>
+    <button type="submit" class="btn btn-danger btn-md">Break!</button> (doesn't work yet)
+  </form>
+  <br><br>
+
   <div class="controls">
     <label>Result:</label><br>
-    <p class="form-control-static">(cracked hash here)</p>
+    <p class="form-control-static">{{ result }}</p>
   </div>
 </div>
 {% endblock %}
