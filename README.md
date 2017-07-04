@@ -7,6 +7,7 @@ Simple md5 breaking service written in python using Flask and redis. Offers an H
 currently available endpoints (routes) are:
   * /
   * /about
+  * /result (POST)
   * /md5/`<md5hashstr>`
   * /db/flush
   * /db/init
