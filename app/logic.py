@@ -3,10 +3,14 @@ import hashlib
 import os
 import re
 
-r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis(host='0.0.0.0', port=6379, db=0)
 
 def md5hash(cleartext):
     return hashlib.md5(cleartext).hexdigest()
+
+def add_to_database(cleartext):
+    r.set(md5hash(cleartext), cleartext)
+    #print "added: %s : %s" % (md5hash(cleartext), cleartext)
 
 def flushdb(self):
     self.execute_command('FLUSHALL')
@@ -36,8 +40,7 @@ def pumpwordlistintodb(wordlist):
     with open(wordlist, 'r') as file:
         for i, line in enumerate(file):
             cleartext = line.strip()
-            r.set(md5hash(cleartext),cleartext)
-            #print "added: %s : %s" % (md5hash(cleartext), cleartext)
+            add_to_database(cleartext)
         print "added %d entries to the database." % (i+1)
 
 def breakhash(md5hashstring):

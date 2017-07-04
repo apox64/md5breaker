@@ -2,10 +2,12 @@ from flask import render_template
 from flask import jsonify
 from flask import request
 
-from mainlogicredis import breakhash
-from mainlogicredis import getdbsize
-from mainlogicredis import doFlushDB
-from mainlogicredis import initDB
+from logic import breakhash
+from logic import getdbsize
+from logic import doFlushDB
+from logic import initDB
+from logic import md5hash
+from logic import add_to_database
 
 from app import app
 
@@ -30,7 +32,17 @@ def resultsomething():
     clear = request.form.getlist('md5hash')[0]
     return render_template("index.html", result = breakhash(clear))
 
-@app.route('/database/flush', methods = ['GET'])
+@app.route('/db/add/<clear>')
+def add_md5(clear):
+    add_to_database(clear)
+    getdbsize()
+    message = {
+        'hash' : md5hash(clear),
+        'clear' : clear
+    }
+    return jsonify(message)
+
+@app.route('/db/flush', methods = ['GET'])
 def flushDatabase():
     doFlushDB()
     message = {
@@ -39,7 +51,7 @@ def flushDatabase():
     }
     return jsonify(message)
 
-@app.route('/database/init', methods = ['GET'])
+@app.route('/db/init', methods = ['GET'])
 def init():
     initDB()
     message = {

@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 {% block title %}md5 Hashbreaker{% endblock %}
 {% block body %}
+<style>
+  textarea {
+    resize: none;
+    background-color: inherit;
+    border: solid;
+    border-width: medium;
+    border-color: #737373;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 20px;
+    padding: 12px 0;
+    color: #737373;
+  }
+</style>
 <div class="jumbotron">
   <h1>md5 Hashbreaker</h1>
   <p class="lead">Throw some md5 hash in here and let me crack it for you ...</p>
 
   <form action="/result" method="POST">
     <input type="text" class="form-control" name="md5hash" value="21232f297a57a5a743894a0e4a801fc3" id="md5hash"><br><br>
-    <button type="submit" class="btn btn-danger btn-md">Break!</button> (doesn't work yet)
+    <button type="submit" class="btn btn-danger btn-md">Break!</button>
   </form>
   <br><br>
 
   <div class="controls">
-    <label>Result:</label><br>
-    <p class="form-control-static">{{ result }}</p>
+    <textarea rows="1" cols="32" placeholder="..." readonly>{{ result }}</textarea>
   </div>
 </div>
 {% endblock %}
