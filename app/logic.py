@@ -3,7 +3,14 @@ import hashlib
 import os
 import re
 
-r = redis.Redis(host='0.0.0.0', port=6379, db=0)
+r = redis.Redis(host='redis', port=6379, db=0)
+
+def check_redis_connection():
+    try:
+        response = r.client_list()
+        print "Connection to database successful."
+    except redis.ConnectionError:
+        print "Could not establish connection to redis database."
 
 def md5hash(cleartext):
     return hashlib.md5(cleartext).hexdigest()
@@ -60,3 +67,5 @@ def initDB():
         pumpwordlistintodb(os.path.join(wordlist_dir, f))
     print "done adding wordlists to the database."
     getdbsize()
+
+check_redis_connection()

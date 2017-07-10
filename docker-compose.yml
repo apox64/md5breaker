@@ -1,12 +1,14 @@
 version: '3'
 services:
   web:
+    container_name: web
     build: .
     ports:
     - "5000:5000"
     links:
     - redis
   redis:
+    container_name: redis
     image: redis:latest
     ports:
     - "6379:6379"

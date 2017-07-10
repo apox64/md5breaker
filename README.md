@@ -29,13 +29,15 @@ the following part is only necessary, when you don't use docker ...
 ## Docker
 
 ---
-**docker doesn't work properly yet** (containers don't talk to each other)
 
-1. install docker-compose
+1. install [docker-compose](https://docs.docker.com/compose/install/)
 2. run `docker-compose build` and `docker-compose run`
 
 alternatively:
-3. build Docker container from Dockerfile:
+1. build Docker container from Dockerfile:
 `docker build -t md5breaker-python:latest .`
-4. run Docker container:
+2. install and run [redis-server](https://redis.io/topics/quickstart)
+3. go to `app/logic.py` and change `host='redis'` to `host='127.0.0.1'`
+4. verify connection via `redis-cli ping` (should return `PONG`)
+5. run Docker container:
 `docker run -d -p 5000:5000 --name md5breaker-python md5breaker-python`
