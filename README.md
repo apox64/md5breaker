@@ -31,7 +31,7 @@ the following part is only necessary, when you don't use docker ...
 ---
 
 1. install [docker-compose](https://docs.docker.com/compose/install/)
-2. run `docker-compose build` and `docker-compose run`
+2. run `docker-compose build` and `docker-compose up`
 
 alternatively:
 1. build Docker container from Dockerfile:
