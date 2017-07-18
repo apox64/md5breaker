@@ -1,5 +1,13 @@
-# md5breaker-python
-Simple md5 breaking service written in python using Flask and redis. Offers an HTML frontend and an API.
+# md5breaker
+Simple md5 breaking microservice written in python using Flask and redis. Offers an HTML frontend and an API.
+
+---
+
+## Usage
+
+1. put some wordlist files in `/wordlists`
+2. `/db/init`
+3. `/md5/21232f297a57a5a743894a0e4a801fc3` will give you the cleartext `admin` (JSON)
 
 ---
 
