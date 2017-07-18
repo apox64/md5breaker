@@ -15,29 +15,18 @@ currently available endpoints (routes) are:
 
 ---
 
-## Installation
+## Run with Docker (recommended)
 
-1. clone the repo: `git clone https://github.com/apox64/md5breaker-python.git`
+1. clone the repo: `git clone https://github.com/apox64/md5breaker.git`
+2. install [docker-compose](https://docs.docker.com/compose/install/)
+3. run `docker-compose build` and `docker-compose up`
+
 ---
-the following part is only necessary, when you don't use docker ...
+
+## Run without Docker
 
 1. install a database server: `sudo apt-get install redis-server` (you can verify if it's running with `netstat -tulpn`, it should run on port **6379** (default))
-2. install Flask `pip install flask` and `sudo apt-get install python-flask`
-3. run `python run.py` *(alternatively you can first* `export FLASK_APP=run.py` *and then run* `flask run` *)*
----
-
-## Docker
-
----
-
-1. install [docker-compose](https://docs.docker.com/compose/install/)
-2. run `docker-compose build` and `docker-compose up`
-
-alternatively:
-1. build Docker container from Dockerfile:
-`docker build -t md5breaker-python:latest .`
-2. install and run [redis-server](https://redis.io/topics/quickstart)
-3. go to `app/logic.py` and change `host='redis'` to `host='127.0.0.1'`
-4. verify connection via `redis-cli ping` (should return `PONG`)
-5. run Docker container:
-`docker run -d -p 5000:5000 --name md5breaker-python md5breaker-python`
+2. go to `app/logic.py` and change `host='redis'` to `host='127.0.0.1'`
+3. verify connection via `redis-cli ping` (should return `PONG`)
+4. install the [requirements](https://github.com/apox64/md5breaker/blob/master/requirements.txt) with `pip install -r requirements.txt`
+5. run `python run.py` *(alternatively you can first* `export FLASK_APP=run.py` *and then run* `flask run` *)*
